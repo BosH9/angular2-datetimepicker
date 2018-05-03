@@ -36,6 +36,8 @@ export class DatePicker implements OnInit, ControlValueAccessor {
     toHourValue: number = 0;
     minValue: number = 0;
     toMinValue: number = 0;
+    secValue: number = 0;
+    toSecValue: number = 0;
     timeViewMeridian: string = "";
     toTimeViewMeridian: string = "";
     timeView: boolean = false;
@@ -52,7 +54,7 @@ export class DatePicker implements OnInit, ControlValueAccessor {
         defaultOpen: false,
         bigBanner: true,
         timePicker: false,
-        format: 'dd-MMM-yyyy hh:mm a',
+        format: 'MM/dd/yyyy HH:mm:ss',
         cal_days_labels: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
         cal_full_days_lables: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         cal_months_labels: ['January', 'February', 'March', 'April',
@@ -127,6 +129,7 @@ export class DatePicker implements OnInit, ControlValueAccessor {
             this.hourValue = 12;
         }
         this.minValue = this.date.getMinutes();
+        this.secValue=this.date.getSeconds();
     }
     initDateRange(val: DateRange) {
         this.dateRange.startDate = new Date(val.startDate);
@@ -143,6 +146,7 @@ export class DatePicker implements OnInit, ControlValueAccessor {
             this.hourValue = 12;
         }
         this.minValue = this.dateRange.startDate.getMinutes();
+        this.secValue=this.date.getSeconds();
 
         if (this.dateRange.endDate.getHours() <= 11) {
             this.toHourValue = this.dateRange.endDate.getHours();
@@ -156,7 +160,7 @@ export class DatePicker implements OnInit, ControlValueAccessor {
             this.toHourValue = 12;
         }
         this.toMinValue = this.dateRange.endDate.getMinutes();
-
+        this.toSecValue=59;
     }
     generateDays(date: Date) {
         var year = date.getFullYear(),
@@ -245,6 +249,7 @@ export class DatePicker implements OnInit, ControlValueAccessor {
                 this.date.setHours(this.hourValue);
             }
             this.date.setMinutes(this.minValue);
+            this.date.setSeconds(this.secValue);
         }
         else {
             if (this.hourValue == 12) {
@@ -254,6 +259,7 @@ export class DatePicker implements OnInit, ControlValueAccessor {
                 this.date.setHours(this.hourValue + 12);
             }
             this.date.setMinutes(this.minValue);
+            this.date.setSeconds(this.secValue);
         }
         this.date = new Date(this.date);
         this.timeView = !this.timeView;
@@ -397,6 +403,18 @@ export class DatePicker implements OnInit, ControlValueAccessor {
         if (this.minValue > 0) {
             this.minValue -= 1;
             console.log(this.minValue);
+        }
+    }
+    incSeconds() {
+        if (this.secValue < 59) {
+            this.secValue += 1;
+            console.log(this.secValue);
+        }
+    }
+    decSeconds() {
+        if (this.secValue > 0) {
+            this.secValue -= 1;
+            console.log(this.secValue);
         }
     }
     done() {

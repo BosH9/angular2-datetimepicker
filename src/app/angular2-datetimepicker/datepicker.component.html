@@ -73,15 +73,21 @@
         <div class="time">
             <div class="hour">
                 <span class="fa fa-plus inc-btn" (click)="incHour()"></span>
-                <input type="number" value="{{hourValue}}" [(ngModel)]="hourValue" autofocus/>
+                <input type="number" value="{{hourValue}}" maxlength="2" title="hours" [(ngModel)]="hourValue" autofocus/>
                 <span class="fa fa-minus dec-btn" (click)="decHour()"></span>
             </div>
             <div class="time-divider">:</div>
             <div class="minutes">
                 <span class="fa fa-plus inc-btn" (click)="incMinutes()"></span>
-                <input type="number" value="{{minValue}}" [(ngModel)]="minValue" />
+                <input type="number" value="{{minValue}}" max="59" min="0" title="minutes" [(ngModel)]="minValue" />
                 <span class="fa fa-minus dec-btn" (click)="decMinutes()"></span>
             </div>
+            <div class="time-divider">:</div>
+                <div class="seconds">
+                    <span class="fa fa-plus inc-btn" (click)="incSeconds()"></span>
+                    <input type="text" value="{{secValue}}" maxlength="2" min="0" title="seconds" [(ngModel)]="secValue" />
+                    <span class="fa fa-minus dec-btn" (click)="decSeconds()"></span>
+                </div>
         </div>
         <div class="meridian">
             <div class="cuppa-btn-group">
@@ -216,6 +222,12 @@
                     <input type="number" value="{{minValue}}" [(ngModel)]="minValue" />
                     <span class="fa fa-minus dec-btn" (click)="decMinutes()"></span>
                 </div>
+                <div class="time-divider">:</div>
+                <div class="seconds">
+                    <span class="fa fa-plus inc-btn" (click)="incSeconds()"></span>
+                    <input type="number" value="{{secValue}}" [(ngModel)]="secValue" />
+                    <span class="fa fa-minus dec-btn" (click)="decSeconds()"></span>
+                </div>
             </div>
             <div class="meridian">
                 <div class="cuppa-btn-group">
@@ -294,6 +306,12 @@
                     <span class="fa fa-plus inc-btn" (click)="incMinutes()"></span>
                     <input type="number" value="{{minValue}}" [(ngModel)]="minValue" />
                     <span class="fa fa-minus dec-btn" (click)="decMinutes()"></span>
+                </div>
+                <div class="time-divider">:</div>
+                <div class="seconds">
+                    <span class="fa fa-plus inc-btn" (click)="incSeconds()"></span>
+                    <input type="number" value="{{secValue}}" [(ngModel)]="secValue" />
+                    <span class="fa fa-minus dec-btn" (click)="decSeconds()"></span>
                 </div>
             </div>
             <div class="meridian">

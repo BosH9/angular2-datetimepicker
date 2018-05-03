@@ -147,9 +147,9 @@ body{
 .time i:hover{
     color: rgba(255, 255, 255, 0.65);
 }
-.time > .hour, .time > .minutes{
+.time > .hour, .time > .minutes, .time > .seconds{
     float: left;
-    width: 48%;
+    width: 30%;
     text-align: center;
 }
 .wc-month-row > div:nth-child(1), .wc-year-row > div:nth-child(1){
